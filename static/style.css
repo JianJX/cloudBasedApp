@@ -1,0 +1,209 @@
+body {
+    margin: 0;
+    font-family: "helvetica", sans-serif;
+    text-align: center;
+
+    background-image: url('bg1.jpeg');
+    background-size: cover;
+    -webkit-animation: slidein 15s;
+    animation: slidein 15s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate;              
+}
+
+@-webkit-keyframes slidein {
+    from {background-position: top; background-size:1200px; }
+    to {background-position: 0px 0px;background-size:1200px;}
+}
+
+@keyframes slidein {
+    from {background-position: top;background-size:1200px; }
+    to {background-position: 0px 0px;background-size:1200px;}
+}
+
+/* Navbar container */
+.navbar {
+    overflow: hidden;
+    background: linear-gradient(to right, #c788e0, #8e88df);
+    font-family: Arial;
+}
+  
+/* Links inside the navbar */
+.navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+  
+/* The dropdown container */
+.dropdown {
+    width: 100px;
+    float: right;
+    overflow: hidden;
+}
+  
+/* Dropdown button */
+.dropdown .dropbtn {
+    width: 100px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit; /* Important for vertical align on mobile phones */
+    margin: 0; /* Important for vertical align on mobile phones */
+}
+  
+/* Add a red background color to navbar links on hover */
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: rgb(73, 180, 252);
+}
+  
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 50px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+  
+/* Links inside the dropdown */
+.dropdown-content a {
+    width: 100px;
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+  
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: rgb(73, 180, 252);
+}
+  
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+#welcomeMessage {
+    padding-top: 10%;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#welcomeMessage p1{
+    font-size: 80px;
+    color: snow;
+}
+
+#searchBox {
+    background-color: snow;
+    border: 10px inset lavender;
+    padding: 20px;
+    width: 50%;
+    margin: auto;
+    margin-top: 50px;
+}
+
+#searchBoxHeader {
+    font-size: 25px;
+}
+
+#searchForm {
+    width: 100%;
+}
+
+#searchButton {
+    background-color: lavender;
+    border: 3px inset lavender;
+    width: 80px;
+    height: 30px;
+}
+
+#searchForm input {
+    border: 2px inset lavender;
+}
+
+#searchForm div span {
+    display: none;
+}
+
+#sq1:hover + #st1 {
+    display: block;
+    font-size: 12px;
+    width: 30%;
+    margin-left: 70%;
+    border: 2px solid lavender;
+    border-radius: 15px;
+}
+
+#sq2:hover + #st2 {
+    display: block;
+    font-size: 12px;
+    width: 30%;
+    margin-left: 70%;
+    border: 2px solid lavender;
+    border-radius: 15px;
+}
+
+#resultHeader{
+    font-size: 35px;
+    color: snow;
+}
+
+#result {
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    grid-gap: 25px;
+    row-gap: 50px;
+}
+
+#result div {
+    background-color: lavender;
+    width: 80%;
+    height: 80%;
+    margin: auto;
+    margin-left: 15%;
+    border: 2px inset plum;
+}
+
+#listingBox {
+    background-color: snow;
+    border: 10px inset lavender;
+    padding: 20px;
+    width: 50%;
+    margin: auto;
+    margin-top: 50px;
+}
+
+#listingBoxHeader {
+    font-size: 25px;
+}
+
+#listingForm {
+    width: 100%;
+    margin: auto;
+}
+
+#listingButton {
+    background-color: lavender;
+    border: 3px inset lavender;
+    width: 50px;
+    height: 30px;
+}
+
+#listingForm input {
+    border: 2px inset lavender;
+}

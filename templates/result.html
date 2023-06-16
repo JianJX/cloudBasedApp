@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<body>
+    <div class="navbar">
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('search') }}">Search</a>
+        <a href="{{ url_for('listing') }}">Food Listing</a>
+        <a href="#about">Contact</a>
+        <a href="#about">About</a>
+        <div class="dropdown">
+          <button class="dropbtn">More</button>
+          <div class="dropdown-content">
+            <a href="#">TBD 1</a>
+            <a href="#">TBD 2</a>
+            <a href="#">TBD 3</a>
+            <a href="#">TBD 4</a>
+            <a href="#">TBD 5</a>
+          </div>
+        </div>
+      </div>
+    <br>
+    <p1 id="resultHeader">Restaurants found</p1>
+    <br>
+    <br>
+    <div id='result'></div>
+    <script>
+        data = {{results | tojson}};
+        for (let i = 0; i < data.length; i++) {
+            if (data[i]['opening_hours']['open_now']) {
+                var status_st = 'Open';
+            } else {
+                var status_st = 'Closed';
+            }
+            if (data[i]['rating'] == null) {
+                var rating_st = 'Unavailable';
+            } else {
+                var rating_st = data[i]['rating'] + ' (rated by ' + data[i]['user_ratings_total'] + ' users)';
+            }
+            if (data[i]['price_level'] == null) {
+                var price_st = 'Unavailable';
+            } else{
+                var price_st = data[i]['rating'];
+            }
+            var tag = document.createElement('div');
+            /*
+            const mediaQuery = window.matchMedia('(min-width: 1025px)');
+            if (mediaQuery.matches) {
+                tag.style.width = '40%';
+            } else {
+                tag.style.width = '80%';
+            }*/
+            tag.style.borderStyle = 'solid';
+            tag.style.borderRadius = '15px';
+            tag.style.padding = '20px';
+            var open_now = document.createTextNode(status_st);
+            var restaurant_name = document.createTextNode(data[i]['name']);
+            var vicinity = document.createTextNode(data[i]['vicinity']);
+            var rating = document.createTextNode('Rating: ' + rating_st);
+            var price_level = document.createTextNode('Price Level: ' + price_st);
+            var btn = document.createElement('a');
+            var btn_txt = document.createTextNode("Get Directions");
+            var container = document.createElement('span');
+            container.appendChild(open_now);
+            container.style.fontSize = '30px';
+            if (status_st == 'Open') {
+                container.style.color = 'green';
+            } else {
+                container.style.color = 'red';
+            }
+            tag.appendChild(container);
+            btn.appendChild(btn_txt);
+            var lat = data[i]['geometry']['location']['lat'];
+            var lng = data[i]['geometry']['location']['lng'];
+            btn.href = "https://www.google.com/maps/search/?api=1&query=" + lat + "%2C" + lng + "&query_place_id=" + data[i]['place_id'];
+            tag.appendChild(document.createElement('br'));
+            tag.appendChild(restaurant_name);
+            tag.appendChild(document.createElement('br'));
+            tag.appendChild(vicinity);
+            tag.appendChild(document.createElement('br'));
+            tag.appendChild(rating);
+            tag.appendChild(document.createElement('br'));
+            tag.appendChild(price_level);
+            tag.appendChild(document.createElement('br'));
+            tag.appendChild(btn);
+            var element = document.getElementById('result');
+            element.appendChild(tag);
+        }
+    </script>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</body>
