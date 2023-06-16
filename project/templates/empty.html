@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+  <title>Restaurant Scraper</title>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="navbar">
+    <a href="{{ url_for('home') }}">Home</a>
+    <a href="#about">Search</a>
+    <a href="#about">Contact</a>
+    <a href="#about">About</a>
+    <div class="dropdown">
+      <button class="dropbtn">More</button>
+      <div class="dropdown-content">
+        <a href="#">TBD 1</a>
+        <a href="#">TBD 2</a>
+        <a href="#">TBD 3</a>
+      </div>
+    </div>
+  </div>
+  <h1>No restaurants found within the given radius!</h1>
+  <form>
+      <label for="category">Category: </label>
+      <input type="text" name="category", id="category"><br><br>
+      <label for="distance">Distance: </label>
+      <input type="number" name="distance", id="distance"><br>
+  </form>
+  <button onClick="getLocation()">Search</button>
+</body>

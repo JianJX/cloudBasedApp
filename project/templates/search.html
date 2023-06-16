@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+  <title>Restaurant Scraper</title>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <div class="navbar">
+    <a href="{{ url_for('home') }}">Home</a>
+    <a href="{{ url_for('search') }}">Search</a>
+    <a href="{{ url_for('listing') }}">Food Listing</a>
+    <a href="#about">Contact</a>
+    <a href="#about">About</a>
+    <div class="dropdown">
+      <button class="dropbtn">More</button>
+      <div class="dropdown-content">
+        <a href="#">TBD 1</a>
+        <a href="#">TBD 2</a>
+        <a href="#">TBD 3</a>
+        <a href="#">TBD 4</a>
+        <a href="#">TBD 5</a>
+      </div>
+    </div>
+  </div>
+  <div id="searchBox">
+    <h1 id="searchBoxHeader">Search Restaurants</h1>
+    <br>
+    <form id="searchForm">
+      <div id="categoryRow">
+        <label for="category">Category: </label>
+        <input type="text" name="category", id="category">
+        <i class="fa fa-question-circle" id="sq1"></i>
+        <span id="st1">Any keywords such as sushi, burgers, Korean, Chinese</span>
+      </div>
+      <br>
+      <div id="distanceRow">
+        <label for="distance">Distance: </label>
+        <input type="number" name="distance", id="distance">
+        <i class="fa fa-question-circle" id="sq2"></i>
+        <span id="st2">The radius in miles around current location to search</span>
+      </div>
+    </form>
+    <br>
+    <br>
+    <button onClick="getLocation()" id="searchButton">Search</button>
+  </div>
+</body>
