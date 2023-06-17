@@ -3,26 +3,36 @@ body {
     font-family: "helvetica", sans-serif;
     text-align: center;
 
-    background-image: url('bg1.jpeg');
+    background-image: url('bg2.jpeg');
     background-size: cover;
-    -webkit-animation: slidein 15s;
-    animation: slidein 15s;
-    -webkit-animation-fill-mode: forwards;
+    animation: slidein 12s;
     animation-fill-mode: forwards;
-    -webkit-animation-iteration-count: infinite;
     animation-iteration-count: infinite;
-    -webkit-animation-direction: alternate;
     animation-direction: alternate;              
 }
 
+/*
 @-webkit-keyframes slidein {
-    from {background-position: top; background-size:1200px; }
-    to {background-position: 0px 0px;background-size:1200px;}
+    from {
+        background-position: top; 
+        background-size:1200px;
+    }
+    to {
+        background-position: 0px 0px;
+        background-size:1200px;
+    }
 }
+*/
 
 @keyframes slidein {
-    from {background-position: top;background-size:1200px; }
-    to {background-position: 0px 0px;background-size:1200px;}
+    from {
+        background-position: top;
+        background-size: auto; 
+    }
+    to {
+        background-position: bottom;
+        background-size: auto;
+    }
 }
 
 /* Navbar container */
@@ -114,7 +124,7 @@ body {
     padding: 20px;
     width: 50%;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 100px;
 }
 
 #searchBoxHeader {
@@ -163,14 +173,30 @@ body {
     color: snow;
 }
 
-#result {
+.single {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.multiple {
     display: grid;
     grid-template-columns: 30% 30% 30%;
     grid-gap: 25px;
     row-gap: 50px;
 }
 
-#result div {
+.single div {
+    padding: 20px;
+    background-color: lavender;
+    width: 80%;
+    height: 100%;
+    margin: auto;
+    border: 2px inset plum;
+}
+
+.multiple div {
+    padding: 20px;
     background-color: lavender;
     width: 80%;
     height: 80%;
@@ -185,7 +211,7 @@ body {
     padding: 20px;
     width: 50%;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 100px;
 }
 
 #listingBoxHeader {
@@ -206,4 +232,11 @@ body {
 
 #listingForm input {
     border: 2px inset lavender;
+}
+
+footer {
+    background-color: #f9f9f9;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }

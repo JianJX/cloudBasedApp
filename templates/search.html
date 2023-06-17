@@ -10,8 +10,6 @@
     <a href="{{ url_for('home') }}">Home</a>
     <a href="{{ url_for('search') }}">Search</a>
     <a href="{{ url_for('listing') }}">Food Listing</a>
-    <a href="#about">Contact</a>
-    <a href="#about">About</a>
     <div class="dropdown">
       <button class="dropbtn">More</button>
       <div class="dropdown-content">
@@ -40,9 +38,17 @@
         <i class="fa fa-question-circle" id="sq2"></i>
         <span id="st2">The radius in miles around current location to search</span>
       </div>
+      <br>
+      <div id="checkBoxRow">
+        <input type="checkbox" id="random_select" name="random_select" checked="">
+        <label for="random_select">Random Selection</label>
+      </div>
     </form>
     <br>
     <br>
     <button onClick="getLocation()" id="searchButton">Search</button>
   </div>
+  <footer>
+    <p>Image by <a href="https://www.freepik.com/free-photo/top-view-dining-tables-without-food_38054574.htm#query=4k%20plate%20and%20utensil&position=13&from_view=search&track=ais">Freepik</a></p>
+  </footer>
 </body>

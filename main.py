@@ -3,7 +3,6 @@ import json
 import random
 from flask import Flask, render_template, request
 from credentials import API_KEY
-from search import geo_search, nearby_search
 
 app = Flask(__name__)
 
@@ -25,16 +24,14 @@ def result():
     args = request.args
     category = args.get('category')
     distance = args.get('distance')
+    flag = args.get('check')
     lat = args.get('lat')
     lng = args.get('lng')
     radius = str(int(distance) * 1609)
     search_url = "{}location={},{}&radius={}&type=restaurant&keyword={}&key={}".format(nearby_url, lat, lng, radius, category, API_KEY)
     res = requests.get(search_url).json()
     restaurants = res["results"]
-    print(len(restaurants))
-    if len(restaurants) == 0:
-        return render_template("empty.html")
-    return render_template("result.html", results=restaurants)
+    return render_template("result.html", results=restaurants, random_select=flag)
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)

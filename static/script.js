@@ -9,8 +9,13 @@ function getLocation() {
 function showPosition(position) {
   var category = document.getElementById("category").value;
   var distance = document.getElementById("distance").value;
-  url = 'http://127.0.0.1:8080/result?category=' + category + "&distance=" + distance + "&lat=" + position.coords.latitude + "&lng=" + position.coords.longitude; 
-  //url = 'https://ethereal-reef-384100.uw.r.appspot.com/search?category=' + category + "&distance=" + distance + "&lat=" + position.coords.latitude + "&lng=" + position.coords.longitude; 
+  if (document.getElementById("random_select").checked) {
+    var check = 'true';
+  } else {
+    var check = 'false';
+  }
+  url = 'http://127.0.0.1:8080/result?category=' + category + "&distance=" + distance + "&lat=" + position.coords.latitude + "&lng=" + position.coords.longitude + "&check=" + check; 
+  //url = 'https://ethereal-reef-384100.uw.r.appspot.com/search?category=' + category + "&distance=" + distance + "&lat=" + position.coords.latitude + "&lng=" + position.coords.longitude + "&check=" + check; 
   window.location.href = url;
 }
 
