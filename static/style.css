@@ -2,10 +2,13 @@ body {
     margin: 0;
     font-family: "helvetica", sans-serif;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 
-    background-image: url('bg2.jpeg');
+    background-image: url('bg3.jpeg');
     background-size: cover;
-    animation: slidein 12s;
+    animation: slidein 60s;
     animation-fill-mode: forwards;
     animation-iteration-count: infinite;
     animation-direction: alternate;              
@@ -15,11 +18,11 @@ body {
 @-webkit-keyframes slidein {
     from {
         background-position: top; 
-        background-size:1200px;
+        background-size:2800px;
     }
     to {
-        background-position: 0px 0px;
-        background-size:1200px;
+        background-position: bottom;
+        background-size:1800px;
     }
 }
 */
@@ -27,11 +30,11 @@ body {
 @keyframes slidein {
     from {
         background-position: top;
-        background-size: auto; 
+        background-size: 1300px; 
     }
     to {
         background-position: bottom;
-        background-size: auto;
+        background-size: 1500px;
     }
 }
 
@@ -89,7 +92,7 @@ body {
   
 /* Links inside the dropdown */
 .dropdown-content a {
-    width: 100px;
+    width: 70px;
     float: none;
     color: black;
     padding: 12px 16px;
@@ -135,7 +138,7 @@ body {
     width: 100%;
 }
 
-#searchButton {
+#submitButton {
     background-color: lavender;
     border: 3px inset lavender;
     width: 80px;
@@ -171,6 +174,14 @@ body {
 #resultHeader{
     font-size: 35px;
     color: snow;
+}
+
+#result {
+    flex-grow: 1;
+}
+
+#welcomeMessage {
+    flex-grow: 1;
 }
 
 .single {
@@ -235,8 +246,43 @@ body {
 }
 
 footer {
-    background-color: #f9f9f9;
-    position: absolute;
+    background-color: lavender;
     bottom: 0;
     width: 100%;
+}
+
+#confirmButton {
+    background-color: snow;
+    border: 3px inset snow;
+    width: 80px;
+    height: 30px;
+}
+
+#detail {
+    display: block;
+    margin: auto;
+}
+
+#viewListingBox {
+    flex-grow: 1;
+}
+
+#viewListingTable {
+    background-color: snow;
+    border: 10px inset lavender;
+    margin: auto;
+    margin-top: 30px;
+    width: 80%;
+}
+
+#viewListingTable thead tr{
+    height: 50px;
+}
+
+#viewListingTable tbody tr {
+    height: 50px;
+}
+
+th, td {
+    border: solid 2px black;
 }

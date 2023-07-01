@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<head>
+  <title>Restaurant Scraper</title>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="navbar">
+    <a href="{{ url_for('home') }}">Home</a>
+    <a href="{{ url_for('nearbySearch') }}">Search</a>
+    <a href="{{ url_for('placeSearch') }}">Food Listing</a>
+    <a href="{{ url_for('viewListings') }}">View Listing</a>
+    <div class="dropdown">
+      <button class="dropbtn">More</button>
+      <div class="dropdown-content">
+        <a href="#">TBD 1</a>
+        <a href="#">TBD 2</a>
+        <a href="#">TBD 3</a>
+        <a href="#">TBD 4</a>
+        <a href="#">TBD 5</a>
+      </div>
+    </div>
+  </div>
+  <div id="viewListingBox">
+    <table id="viewListingTable">
+      <thead>
+        <tr>
+          <th>Restaurant Name</th>
+          <th>Address</th>
+          <th>Price</th>
+          <th>Food Description</th>
+        </tr>
+      </thead>
+      <tbody id="viewListingContent">
+      </tbody>
+    </table>
+  </div>
+  <script>
+      listings = {{listings | tojson}};
+      var table = document.getElementById('viewListingContent');
+      for (let i = 0; i < listings.length; i++) {
+        var tr = document.createElement('tr');
+        var r_name = document.createTextNode(listings[i][0]);
+        var addr = document.createTextNode(listings[i][1]);
+        var price = document.createTextNode('$' + listings[i][2]);
+        var detail = document.createTextNode(listings[i][3]);
+        var col1 = document.createElement('td');
+        col1.appendChild(r_name);
+        var col2 = document.createElement('td');
+        col2.appendChild(addr);
+        var col3 = document.createElement('td');
+        col3.appendChild(price);
+        var col4 = document.createElement('td');
+        col4.appendChild(detail);
+        tr.appendChild(col1);
+        tr.appendChild(col2);
+        tr.appendChild(col3);
+        tr.appendChild(col4);
+        table.appendChild(tr);
+      }
+  </script>
+  <footer>
+    <p>Image by <a href="https://www.freepik.com/free-photo/top-view-dining-tables-without-food_38054574.htm#query=4k%20plate%20and%20utensil&position=13&from_view=search&track=ais">Freepik</a></p>
+  </footer>
+</body>

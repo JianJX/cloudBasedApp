@@ -2,8 +2,9 @@
 <body>
     <div class="navbar">
         <a href="{{ url_for('home') }}">Home</a>
-        <a href="{{ url_for('search') }}">Search</a>
-        <a href="{{ url_for('listing') }}">Food Listing</a>
+        <a href="{{ url_for('nearbySearch') }}">Search</a>
+        <a href="{{ url_for('placeSearch') }}">Food Listing</a>
+        <a href="{{ url_for('viewListings') }}">View Listing</a>
         <div class="dropdown">
           <button class="dropbtn">More</button>
           <div class="dropdown-content">

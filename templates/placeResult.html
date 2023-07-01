@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<body>
+    <div class="navbar">
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('nearbySearch') }}">Search</a>
+        <a href="{{ url_for('placeSearch') }}">Food Listing</a>
+        <a href="{{ url_for('viewListings') }}">View Listing</a>
+        <div class="dropdown">
+          <button class="dropbtn">More</button>
+          <div class="dropdown-content">
+            <a href="#">TBD 1</a>
+            <a href="#">TBD 2</a>
+            <a href="#">TBD 3</a>
+            <a href="#">TBD 4</a>
+            <a href="#">TBD 5</a>
+          </div>
+        </div>
+      </div>
+    <br>
+    <p1 id="resultHeader">This is what we found</p1>
+    <br>
+    <br>
+    <div id='result'></div>
+    <script>
+        function display() {
+          var data = {{results | tojson}};
+          if (data.length == 0) {
+              var element = document.getElementById('resultHeader');
+              element.textContent = "We could not find any restaurant with this phone number";
+              return 0;
+          }
+          document.getElementById('result').className = 'single';
+          var tag = document.createElement('div');
+          var restaurant_name = document.createTextNode(data[1]);
+          var vicinity = document.createTextNode(data[0]);
+          var url = "/listing?pid=" + data[2] + "&name=" + data[1] + "&addr=" + data[0];
+          var a_btn = document.createElement('a');
+          a_btn.href = url;
+          var btn = document.createElement('button');
+          btn.id = "confirmButton";
+          var btn_txt = document.createTextNode("Confirm");
+          btn.appendChild(btn_txt);
+          a_btn.appendChild(btn);
+          tag.appendChild(document.createElement('br'));
+          tag.appendChild(document.createElement('br'));
+          tag.appendChild(restaurant_name);
+          tag.appendChild(document.createElement('br'));
+          tag.appendChild(document.createElement('br'));
+          tag.appendChild(vicinity);
+          tag.appendChild(document.createElement('br'));
+          tag.appendChild(document.createElement('br'));
+          tag.appendChild(a_btn);
+          var element = document.getElementById('result');
+          element.appendChild(tag);
+        }
+        display();
+    </script>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <footer>
+        <p>Image by <a href="https://www.freepik.com/free-photo/top-view-dining-tables-without-food_38054574.htm#query=4k%20plate%20and%20utensil&position=13&from_view=search&track=ais">Freepik</a></p>
+      </footer>
+</body>

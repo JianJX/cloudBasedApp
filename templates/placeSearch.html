@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
   <title>Restaurant Scraper</title>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
   <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
@@ -20,8 +21,19 @@
       </div>
     </div>
   </div>
+  <!--
   <div id="welcomeMessage">
-    <p1>Welcome!</p1>
+    <p1>Coming soon!</p1>
+  </div>
+  -->
+  <div id="searchBox">
+    <h1 id="searchBoxHeader">Find Your Restaurant!</h1>
+    <br>
+    <form id="searchForm" action="{{ url_for('placeResult') }}" method="get">
+        <label for="phone">Phone Number: </label>
+        <input type="number" name="phone", id="phone"><br><br><br>
+        <input type="submit" id="submitButton"></button>
+    </form>
   </div>
   <footer>
     <p>Image by <a href="https://www.freepik.com/free-photo/top-view-dining-tables-without-food_38054574.htm#query=4k%20plate%20and%20utensil&position=13&from_view=search&track=ais">Freepik</a></p>

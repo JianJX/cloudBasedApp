@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <head>
   <title>Restaurant Scraper</title>
-  <script src="{{ url_for('static', filename='script.js') }}"></script>
   <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
   <div class="navbar">
     <a href="{{ url_for('home') }}">Home</a>
-    <a href="{{ url_for('search') }}">Search</a>
-    <a href="{{ url_for('listing') }}">Food Listing</a>
+    <a href="{{ url_for('nearbySearch') }}">Search</a>
+    <a href="{{ url_for('placeSearch') }}">Food Listing</a>
+    <a href="{{ url_for('viewListings') }}">View Listing</a>
     <div class="dropdown">
       <button class="dropbtn">More</button>
       <div class="dropdown-content">
@@ -20,24 +20,31 @@
       </div>
     </div>
   </div>
-  <div id="welcomeMessage">
-    <p1>Coming soon!</p1>
-  </div>
-  <!--
-  <div id="listingBox">
-    <h1 id="listingBoxHeader">List Your Food!</h1>
-    <form id="listingForm">
-        <label for="restaurant">Restaurant Name: </label>
-        <input type="text" name="restaurant", id="restaurant"><br><br>
-        <label for="notes">Notes: </label>
-        <input type="text" name="notes", id="notes"><br><br>
-        <label for="price">Price: </label>
-        <input type="number" name="price", id="price"><br>
-    </form>
+  <div id="searchBox">
+    <h1 id="searchBoxHeader">Post Your Listing</h1>
     <br>
-    <button onClick="getLocation()" id="listingButton">List</button>
+    <form id="searchForm" action="{{ url_for('listingResult') }}" method="post">
+        <input type='hidden' id='pid' name='pid' value=''>
+        <input type='hidden' id='name' name='name' value=''>
+        <input type='hidden' id='addr' name='addr' value=''>
+        <label for="price">Price: </label>
+        <input type="number" name="price", id="price"><br><br>
+        <label for="period">Listing Period(Days): </label>
+        <input type="number" name="period", id="period"><br><br>
+        <label for="detail">Other details about the food: </label><br>
+        <textarea rows="4" cols="30" name="detail", id="detail"></textarea><br>
+        <button onClick="postListing()" id="submitButton">Submit</button>
+    </form>
   </div>
-  -->
+  <script>
+    const urlParams = new URLSearchParams(location.search);
+    const pid = urlParams.get('pid');
+    document.getElementById('pid').value = pid;
+    const name = urlParams.get('name');
+    document.getElementById('name').value = name;
+    const addr = urlParams.get('addr');
+    document.getElementById('addr').value = addr;
+  </script>
   <footer>
     <p>Image by <a href="https://www.freepik.com/free-photo/top-view-dining-tables-without-food_38054574.htm#query=4k%20plate%20and%20utensil&position=13&from_view=search&track=ais">Freepik</a></p>
   </footer>
