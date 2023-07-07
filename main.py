@@ -26,14 +26,24 @@ def nearbyResult():
     args = request.args
     category = args.get('category')
     distance = args.get('distance')
-    flag = args.get('check')
+    r_flag = args.get('check')
+    o_flag = args.get('open')
     lat = args.get('lat')
     lng = args.get('lng')
     radius = str(int(distance) * 1609)
     full_url = "{}location={},{}&radius={}&type=restaurant&keyword={}&key={}".format(nearby_url, lat, lng, radius, category, API_KEY)
     res = requests.get(full_url).json()
-    restaurants = res["results"]
-    return render_template("nearbyResult.html", results=restaurants, random_select=flag)
+    restaurants = []
+    if o_flag == 'true':
+        for r in res["results"]:
+            try:
+                if r['opening_hours']['open_now']:
+                    restaurants.append(r)
+            except:
+                print(r)
+    else:
+        restaurants = res['results']
+    return render_template("nearbyResult.html", results=restaurants, random_select=r_flag)
 
 @app.route('/placeResult', methods=['GET'])
 def placeResult():

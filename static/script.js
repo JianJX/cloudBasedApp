@@ -14,7 +14,15 @@ function showPosition(position) {
   } else {
     var check = 'false';
   }
-  var url = '/nearbyResult?category=' + category + "&distance=" + distance + "&lat=" + position.coords.latitude + "&lng=" + position.coords.longitude + "&check=" + check; 
-  //url = '/nearbySearch?category=' + category + "&distance=" + distance + "&lat=" + position.coords.latitude + "&lng=" + position.coords.longitude + "&check=" + check; 
+  if (document.getElementById("open_now").checked) {
+    var open_now = 'true';
+  } else {
+    var open_now = 'false';
+  }
+  var url = '/nearbyResult?category=' + category;
+  url += "&distance=" + distance;
+  url += "&lat=" + position.coords.latitude + "&lng=" + position.coords.longitude;
+  url += "&check=" + check;
+  url += "&open=" + open_now;
   window.location.href = url;
 }
